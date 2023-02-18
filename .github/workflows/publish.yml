@@ -1,0 +1,11 @@
+on: [push]
+
+jobs:
+  publish-gpr:
+    runs-on: ubuntu-latest
+    name: A job to publish a package to github package
+    steps:
+      - id: foo
+        uses: Naya-01/composite-actions@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
