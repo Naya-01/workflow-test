@@ -6,6 +6,6 @@ jobs:
     name: A job to publish a package to github package
     steps:
       - id: foo
-        uses: Naya-01/composite-actions@v1
+        uses: Naya-01/composite-actions@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
