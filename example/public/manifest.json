@@ -1,6 +1,6 @@
 {
-  "short_name": "package-test",
-  "name": "package-test",
+  "short_name": "workflow-test",
+  "name": "workflow-test",
   "icons": [
     {
       "src": "favicon.ico",
