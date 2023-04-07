@@ -1,0 +1,29 @@
+name: run-tests
+
+on: [push]
+
+jobs:
+  pip-audit:
+    runs-on: ubuntu-latest
+       
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x' 
+
+      - 
+        name: Store the contents of .pipauditignore in ENV
+        id: audit_env
+        run: |
+          echo "pip_env=\'$(cat .pipauditignore)\'" >> $GITHUB_ENV
+      - 
+        name: Check the vulnerability of dependencies with action
+        uses: pypa/gh-action-pip-audit@v1.0.0
+        with:
+          inputs: requirements.txt
+          ignore-vulns: |
+            echo "${{ env.pip_env }}"
