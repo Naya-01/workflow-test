@@ -19,7 +19,8 @@ jobs:
         name: Store the contents of .pipauditignore in ENV
         id: audit_env
         run: |
-          echo "pip_env=\'$(cat .pipauditignore)\'" >> $GITHUB_ENV
+          pip_env_escaped=$(cat .pipauditignore | sed 's/"/\\"/g')
+          echo "pip_env=$pip_env_escaped" >> $GITHUB_ENV
       - 
         name: Check the vulnerability of dependencies with action
         uses: pypa/gh-action-pip-audit@v1.0.0
